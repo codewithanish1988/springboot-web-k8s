@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-web-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-web-app
+  template:
+    metadata:
+      labels:
+        app: springboot-web-app
+    spec:
+      containers:
+        - name: springboot-web-app-container
+          image: codewithanish1988/springboot-web-k8s:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
